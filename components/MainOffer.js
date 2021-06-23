@@ -16,7 +16,7 @@ const MainOffer = () => {
                 <button className={styles.main_button}>Kontakt</button>
             </div>
             <div className={styles.top_image_container}>
-                <Image className={styles.main_image} width={650} height={450} src="https://ireland.apollo.olxcdn.com/v1/files/0bt31sx0lqp52-PL/image;s=1000x700" />
+                <Image className={styles.main_image} alt="testy" width={650} height={450} src="https://ireland.apollo.olxcdn.com/v1/files/0bt31sx0lqp52-PL/image;s=1000x700" />
             </div>
         </section>
     )

@@ -3,13 +3,13 @@ import Image from 'next/image'
 const Gallery = ({ images, loading }) => {
     return (
         <>
-            {loading && <center><img src="/preload.gif" /></center>}
+            {loading && <center><Image src="/preload.gif" alt="gif" /></center>}
             <section className={styles.container}>
-                {!loading && images.map((img, i) => {
+                {!loading && images.map((pic, i) => {
                     return <div key={i} className={styles.gallery_container}>
                         <div className={styles.gallery_item}>
                             <figure className={styles.image}>
-                                <Image loading="lazy" src={img.download_url} alt="test" width={320} height={320} />
+                                <Image loading="lazy" src={pic.download_url} alt="test" width={320} height={320} />
                             </figure>
                         </div>
                     </div>
