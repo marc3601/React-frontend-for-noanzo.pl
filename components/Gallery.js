@@ -1,5 +1,5 @@
 import styles from "../styles/Gallery.module.css"
-
+import Image from 'next/image'
 const Gallery = ({ images, loading }) => {
     return (
         <>
@@ -9,7 +9,7 @@ const Gallery = ({ images, loading }) => {
                     return <div key={i} className={styles.gallery_container}>
                         <div className={styles.gallery_item}>
                             <figure className={styles.image}>
-                                <img loading="lazy" src={img.download_url} />
+                                <Image loading="lazy" src={img.download_url} alt="test" width={320} height={320} />
                             </figure>
                         </div>
                     </div>
