@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+.container {
+  margin: 0 auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    width: 100vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 95vw;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 90vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 85vw;
+  }
+}

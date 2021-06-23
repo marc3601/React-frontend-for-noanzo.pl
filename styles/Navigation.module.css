@@ -1,0 +1,38 @@
+.navigation_section {
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .logo {
+    color: #4C2922;
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+  }
+  
+  .search_container {
+    flex-basis: 70%;
+  }
+  
+  .search_wrapper {
+    display: flex;
+    justify-content: left;
+    padding-left: 10px;
+    width: 100%;
+    height: 35px;
+    background-color: white;
+    border-radius: 36px
+  }
+  
+  .search_input {
+    flex-grow: 1;
+    margin-left: 10px;
+    border: none;
+    background-color: transparent;
+  }
+  
+  .search_input:focus {
+    outline: none
+  }
