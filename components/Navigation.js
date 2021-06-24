@@ -1,10 +1,13 @@
 import React from 'react'
+import Link from "next/link"
 import Loupe from '../utilities/Loupe'
 import styles from "../styles/Navigation.module.css"
 const Navigation = () => {
     return (
         <div className={styles.navigation_section}>
-            <div className={styles.logo}>LOGO</div>
+            <Link href="/">
+                <div className={styles.logo}>LOGO</div>
+            </Link>
             <div className={styles.search_container}>
                 <div className={styles.search_wrapper}>
                     <Loupe />

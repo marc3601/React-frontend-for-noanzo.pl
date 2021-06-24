@@ -2,28 +2,29 @@
 
 .container {
   margin: 0 auto;
+  min-height: 100vh;
 }
 
 @media (min-width: 576px) {
   .container {
-    width: 100vw;
+    width: 100%;
   }
 }
 
 @media (min-width: 768px) {
   .container {
-    width: 95vw;
+    width: 95%;
   }
 }
 
 @media (min-width: 992px) {
   .container {
-    width: 90vw;
+    width: 90%;
   }
 }
 
 @media (min-width: 1200px) {
   .container {
-    width: 85vw;
+    width: 85%;
   }
 }

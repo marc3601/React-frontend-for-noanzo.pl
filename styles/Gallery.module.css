@@ -3,7 +3,7 @@
     margin: 20px auto 20px;
     
     display: grid;
-    grid-template-columns: repeat(6,1fr);
+    grid-template-columns: repeat(5,1fr);
     grid-gap:25px ;
     grid-auto-flow: dense;
    }
@@ -45,13 +45,13 @@
   }
  
 
-  @media screen and (max-width:1300px) {
+  /* @media screen and (max-width:1300px) {
     .container {
       grid-template-columns: repeat(5,1fr);
     }
-  }
+  } */
 
-  @media screen and (max-width:992px) {
+  @media screen and (max-width:1300px) {
     .container {
       grid-template-columns: repeat(4,1fr);
     }
