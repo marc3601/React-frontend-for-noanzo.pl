@@ -5,7 +5,7 @@ import Layout from "../layout/Layout"
 import Navigation from '../components/Navigation'
 import Offer from "../components/Offer"
 import Gallery from '../components/Gallery'
-const listing = () => {
+const Listing = () => {
     const [images, setImages] = useState([]);
     const [img, setImg] = useState(null)
     const [loading, setLoading] = useState(true);
@@ -44,4 +44,4 @@ const listing = () => {
     )
 }
 
-export default listing
+export default Listing
