@@ -6,7 +6,7 @@ const Navigation = () => {
     return (
         <div className={styles.navigation_section}>
             <Link href="/">
-                <div className={styles.logo}>LOGO</div>
+                <div className={styles.logo}>ANZO</div>
             </Link>
             <div className={styles.search_container}>
                 <div className={styles.search_wrapper}>

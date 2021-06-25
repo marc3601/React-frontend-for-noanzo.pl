@@ -1,0 +1,28 @@
+.container {
+    width: 90%;
+    height: 500px;
+    margin: 50px auto 0;
+    background-color: white;
+    border-radius: 15px;
+    -webkit-box-shadow: 3px 5px 16px -7px #000000; 
+    box-shadow: 3px 5px 16px -7px #000000;
+}
+@media (min-width: 992px) {
+    .container {
+      width: 80%;
+    }
+  }
+  
+  @media (min-width: 1400px) {
+    .container {
+      width: 70%;
+    }
+  } 
+  .main_title {
+    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #4C2922;
+    padding-top: 1rem;
+    text-align: center;
+  }
