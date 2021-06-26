@@ -12,7 +12,17 @@ const Listing = () => {
     const router = useRouter()
 
     useEffect(() => {
-        fetch("https://picsum.photos/v2/list")
+        fetchImages()
+    }, [])
+
+    useEffect(() => {
+        const mainImage = images.filter((item) => item.author === router.query.id)
+        setImg(mainImage[0])
+    }, [router.query.id])
+
+
+    const fetchImages = () => {
+        fetch("https://picsum.photos/v2/list?page=1&limit=10")
             .then((res) => res.json())
             .then((data) => {
                 const filtered = data.filter((item) => item.author != router.query.id)
@@ -21,13 +31,7 @@ const Listing = () => {
                 setImages(filtered)
                 setLoading(false)
             })
-    }, [])
-
-    useEffect(() => {
-        const mainImage = images.filter((item) => item.author === router.query.id)
-        setImg(mainImage[0])
-    }, [router.query.id])
-
+    }
 
     return (
         <>

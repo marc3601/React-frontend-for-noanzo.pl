@@ -9,16 +9,17 @@ const Gallery = ({ images, loading, query, handler }) => {
         handler && handler(filtered)
     }, [query])
 
+
     return (
         <>
             {loading && <center><Image width={50} height={50} src="/preload.gif" alt="gif" /></center>}
-            <section className={styles.container}>
+            <section className={styles.container} >
                 {!loading && images.map((pic, i) => {
                     return <div key={i} className={styles.gallery_container} >
                         <Link href={"/" + pic.author}>
                             <div className={styles.gallery_item}>
                                 <figure className={styles.image}>
-                                    <Image objectFit="cover" layout="responsive" loading="lazy" src={pic.download_url} alt="test" width={340} height={310} />
+                                    <Image objectFit="cover" layout="responsive" src={pic.download_url} alt="test" width={340} height={310} />
                                     <aside className={styles.image_title}>{pic.author}</aside>
                                 </figure>
                             </div>
