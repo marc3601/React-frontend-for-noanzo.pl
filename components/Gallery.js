@@ -16,7 +16,7 @@ const Gallery = ({ images, loading, query, handler }) => {
             <section className={styles.container} >
                 {!loading && images.map((pic, i) => {
                     return <div key={i} className={styles.gallery_container} >
-                        <Link href={"/" + pic.author}>
+                        <Link href={"/" + pic.id}>
                             <div className={styles.gallery_item}>
                                 <figure className={styles.image}>
                                     <Image objectFit="cover" layout="responsive" src={pic.download_url} alt="test" width={340} height={310} />

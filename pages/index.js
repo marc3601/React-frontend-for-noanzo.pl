@@ -11,7 +11,6 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1)
   const [bottom, setBottom] = useState(false)
-  const router = useRouter()
   useEffect(() => {
 
     fetchImages(`https://picsum.photos/v2/list?page=${getRandomInt(21)}&limit=10`)
@@ -24,14 +23,15 @@ export default function Home() {
       fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=5`)
       setPage(page + 1)
     }
+
+    return setLoading(false)
   }, [bottom])
 
   const fetchImages = (url) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        const filtered = data.filter((item) => item.author !== router.query.id)
-        setImages(images.concat(...filtered))
+        setImages(images.concat(...data))
         setLoading(false)
       })
   }
