@@ -16,6 +16,13 @@
   .search_container {
     flex-basis: 70%;
   }
+
+  @media (max-width: 576px) {
+    .search_container {
+      flex-basis: 50%;
+    }
+  }
+  
   
   .search_wrapper {
     display: flex;
