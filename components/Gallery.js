@@ -2,12 +2,8 @@ import { useEffect } from "react"
 import styles from "../styles/Gallery.module.css"
 import Image from 'next/image'
 import Link from "next/link"
-const Gallery = ({ images, loading, query, handler }) => {
+const Gallery = ({ images, loading }) => {
 
-    useEffect(() => {
-        const filtered = images.filter((item) => item.author !== query)
-        handler && handler(filtered)
-    }, [query])
 
 
     return (
