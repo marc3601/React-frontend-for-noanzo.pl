@@ -16,11 +16,13 @@ export default function Listing() {
     const isMounted = useMountedState();
 
     useEffect(() => {
-        if (isMounted) {
-            setImages([])
-            fetchImages(`https://picsum.photos/v2/list?page=${getRandomInt(21)}&limit=15`)
+        const unsubscribe = () => {
+            if (isMounted) {
+                setImages([])
+                fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=15`)
+            }
         }
-
+        return unsubscribe()
     }, [router.asPath])
 
 
@@ -39,11 +41,6 @@ export default function Listing() {
                 setImages(images.concat(...filtered))
                 setLoading(false)
             })
-    }
-
-
-    const getRandomInt = (max) => {
-        return Math.floor(Math.random() * max);
     }
 
 

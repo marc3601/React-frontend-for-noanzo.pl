@@ -15,15 +15,17 @@ export default function Home() {
   const isMounted = useMountedState();
 
   useEffect(() => {
-    if (isMounted) {
-      fetchImages(`https://picsum.photos/v2/list?page=${getRandomInt(21)}&limit=15`)
+    const unsubscribe = () => {
+      if (isMounted) {
+        fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=15`)
+      }
     }
+    return unsubscribe()
   }, [])
 
 
 
   useBottomScrollListener(() => {
-
     if (page <= 20 && isMounted) {
       fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=5`)
       setPage(page + 1)
@@ -40,9 +42,7 @@ export default function Home() {
   }
 
 
-  const getRandomInt = (max) => {
-    return Math.floor(Math.random() * max);
-  }
+
 
   return (
     <>
