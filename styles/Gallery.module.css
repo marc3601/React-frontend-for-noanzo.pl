@@ -6,6 +6,9 @@
     grid-gap:20px ;
     grid-auto-flow: dense;
    }
+   .gallery_container {
+     position: relative;
+   }
   
 
   .gallery_item {

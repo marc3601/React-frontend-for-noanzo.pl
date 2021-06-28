@@ -1,32 +1,47 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { useBottomScrollListener } from 'react-bottom-scroll-listener';
+import { useMountedState } from 'react-use';
 import Head from "next/head"
 import Layout from "../layout/Layout"
 import Navigation from '../components/Navigation'
 import Offer from "../components/Offer"
 import Gallery from '../components/Gallery'
-const Listing = () => {
+
+export default function Listing() {
     const [images, setImages] = useState([]);
-    const [img, setImg] = useState(null)
     const [loading, setLoading] = useState(true);
+    const [page, setPage] = useState(1)
     const router = useRouter()
+    const isMounted = useMountedState();
 
     useEffect(() => {
-        fetch("https://picsum.photos/v2/list")
+        const unsubscribe = () => {
+            if (isMounted) {
+                setImages([])
+                fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=15`)
+            }
+        }
+        return unsubscribe()
+    }, [router.asPath])
+
+
+    useBottomScrollListener(() => {
+        if (page <= 20 && isMounted) {
+            fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=5`)
+            setPage(page + 1)
+        }
+    })
+
+    const fetchImages = (url) => {
+        fetch(url)
             .then((res) => res.json())
             .then((data) => {
-                const filtered = data.filter((item) => item.author != router.query.id)
-                const mainImage = data.filter((item) => item.author === router.query.id)
-                setImg(mainImage[0])
-                setImages(filtered)
+                const filtered = data.filter(item => item.id !== router.query.id)
+                setImages(images.concat(...filtered))
                 setLoading(false)
             })
-    }, [])
-
-    useEffect(() => {
-        const mainImage = images.filter((item) => item.author === router.query.id)
-        setImg(mainImage[0])
-    }, [router.query.id])
+    }
 
 
     return (
@@ -37,11 +52,11 @@ const Listing = () => {
             </Head>
             <Layout>
                 <Navigation />
-                <Offer title={router.query.id} image={img} />
-                <Gallery images={images} loading={loading} query={router.query.id} handler={setImages} />
+                <Offer id={router.query.id} images={images} />
+                <Gallery images={images} loading={loading} />
             </Layout>
         </>
     )
 }
 
-export default Listing
+

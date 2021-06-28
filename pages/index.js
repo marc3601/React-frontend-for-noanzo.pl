@@ -1,24 +1,46 @@
 import Head from 'next/head'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useBottomScrollListener } from 'react-bottom-scroll-listener';
+import { useMountedState } from 'react-use';
 import Layout from "../layout/Layout"
 import Navigation from '../components/Navigation'
 import MainOffer from '../components/MainOffer'
 import Gallery from '../components/Gallery'
-import { useRouter } from 'next/router'
+
 
 export default function Home() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const router = useRouter()
+  const [page, setPage] = useState(1)
+  const isMounted = useMountedState();
+
   useEffect(() => {
-    fetch("https://picsum.photos/v2/list")
+    const unsubscribe = () => {
+      if (isMounted) {
+        fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=15`)
+      }
+    }
+    return unsubscribe()
+  }, [])
+
+
+
+  useBottomScrollListener(() => {
+    if (page <= 20 && isMounted) {
+      fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=5`)
+      setPage(page + 1)
+    }
+  })
+
+  const fetchImages = (url) => {
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        const filtered = data.filter((item) => item.author !== router.query.id)
-        setImages(filtered)
+        setImages(images.concat(...data))
         setLoading(false)
       })
-  }, [])
+  }
+
 
 
 
@@ -28,11 +50,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <title>Budy dla psow</title>
       </Head>
+
       <Layout>
         <Navigation />
         <MainOffer />
         <Gallery images={images} loading={loading} />
       </Layout>
+
     </>
   )
 }
