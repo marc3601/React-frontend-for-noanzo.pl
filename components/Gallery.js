@@ -15,7 +15,7 @@ const Gallery = ({ images, loading }) => {
                             <div className={styles.gallery_item}>
 
                                 <figure className={styles.image}>
-                                    <Image objectFit="cover" layout="responsive" src={pic.download_url} alt="test" width={340} height={310} />
+                                    <Image objectFit="cover" layout="responsive" src={pic.download_url} alt="test" width={340 + 50} height={310 + 50} />
                                     <aside className={styles.image_title}>{pic.author}</aside>
                                 </figure>
                             </div>

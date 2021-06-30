@@ -7,8 +7,11 @@ import Navigation from '../components/Navigation'
 import MainOffer from '../components/MainOffer'
 import Gallery from '../components/Gallery'
 
+import { db } from '../services/firebase';
 
-export default function Home() {
+
+
+export default function Home({ post }) {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1)
@@ -41,9 +44,6 @@ export default function Home() {
       })
   }
 
-
-
-
   return (
     <>
       <Head>
@@ -53,10 +53,35 @@ export default function Home() {
 
       <Layout>
         <Navigation />
-        <MainOffer />
+        <MainOffer post={post} />
         <Gallery images={images} loading={loading} />
       </Layout>
 
     </>
   )
+}
+
+
+export async function getStaticProps() {
+
+  let post = [];
+  try {
+    const querySnapshot = await db
+      .collection("test")
+      .get();
+
+    querySnapshot.forEach((doc) => {
+      post.push(doc.data());
+
+    })
+  } catch (error) {
+    console.log(error);
+  }
+
+  return {
+    props: {
+      post,
+    },
+    revalidate: 30
+  }
 }
