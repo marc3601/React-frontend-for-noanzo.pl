@@ -62,26 +62,17 @@ export default function Home({ post }) {
 }
 
 
-export async function getStaticProps() {
+// export async function getStaticProps() {
+//   // Call an external API endpoint to get posts.
+//   // You can use any data fetching library
+//   const res = await fetch('https://anzo-next.vercel.app/api/main-offer')
+//   const post = await res.json()
 
-  let post = [];
-  try {
-    const querySnapshot = await db
-      .collection("test")
-      .get();
-
-    querySnapshot.forEach((doc) => {
-      post.push(doc.data());
-
-    })
-  } catch (error) {
-    console.log(error);
-  }
-
-  return {
-    props: {
-      post,
-    },
-    revalidate: 30
-  }
-}
+//   // By returning { props: { posts } }, the Blog component
+//   // will receive `posts` as a prop at build time
+//   return {
+//     props: {
+//       post,
+//     },
+//   }
+// }
