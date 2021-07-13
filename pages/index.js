@@ -7,10 +7,6 @@ import Navigation from '../components/Navigation'
 import MainOffer from '../components/MainOffer'
 import Gallery from '../components/Gallery'
 
-import { db } from '../services/firebase';
-
-
-
 export default function Home({ post }) {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,26 +16,25 @@ export default function Home({ post }) {
   useEffect(() => {
     const unsubscribe = () => {
       if (isMounted) {
-        fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=15`)
+        fetchImages(`https://doge-memes.com/api/images`)
       }
     }
     return unsubscribe()
   }, [])
 
+  // useBottomScrollListener(() => {
+  //   if (page <= 20 && isMounted) {
+  //     fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=5`)
+  //     setPage(page + 1)
+  //   }
+  // })
 
-
-  useBottomScrollListener(() => {
-    if (page <= 20 && isMounted) {
-      fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=5`)
-      setPage(page + 1)
-    }
-  })
 
   const fetchImages = (url) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setImages(images.concat(...data))
+        setImages(data)
         setLoading(false)
       })
   }
@@ -53,7 +48,7 @@ export default function Home({ post }) {
 
       <Layout>
         <Navigation />
-        <MainOffer post={post} />
+        <MainOffer post={images} />
         <Gallery images={images} loading={loading} />
       </Layout>
 
@@ -65,7 +60,7 @@ export default function Home({ post }) {
 // export async function getStaticProps() {
 //   // Call an external API endpoint to get posts.
 //   // You can use any data fetching library
-//   const res = await fetch('https://anzo-next.vercel.app/api/main-offer')
+//   const res = await fetch('http://0.0.0.0:3000/api/main-offer')
 //   const post = await res.json()
 
 //   // By returning { props: { posts } }, the Blog component

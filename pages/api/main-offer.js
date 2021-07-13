@@ -1,5 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { db } from "../../services/firebase"
+
+import { db } from "../../services/firebase";
+
+
 const handler = async (req, res) => {
 
   let post = [];

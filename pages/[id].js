@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useBottomScrollListener } from 'react-bottom-scroll-listener';
+// import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 import { useMountedState } from 'react-use';
 import Head from "next/head"
 import Layout from "../layout/Layout"
@@ -18,27 +18,26 @@ export default function Listing() {
     useEffect(() => {
         const unsubscribe = () => {
             if (isMounted) {
-                setImages([])
-                fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=15`)
+                fetchImages(`https://doge-memes.com/api/images`)
             }
         }
         return unsubscribe()
     }, [router.asPath])
 
 
-    useBottomScrollListener(() => {
-        if (page <= 20 && isMounted) {
-            fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=5`)
-            setPage(page + 1)
-        }
-    })
+    // useBottomScrollListener(() => {
+    //     if (page <= 20 && isMounted) {
+    //         fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=5`)
+    //         setPage(page + 1)
+    //     }
+    // })
 
     const fetchImages = (url) => {
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
                 const filtered = data.filter(item => item.id !== router.query.id)
-                setImages(images.concat(...filtered))
+                setImages(filtered)
                 setLoading(false)
             })
     }

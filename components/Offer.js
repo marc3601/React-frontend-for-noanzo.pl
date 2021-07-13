@@ -1,21 +1,26 @@
-import React from 'react'
-import Image from "next/image"
+import React, { useEffect, useState } from 'react'
 import Carousel from './Carousel'
 import styles from "../styles/Offer.module.css"
-const Offer = ({ id }) => {
+const Offer = ({ id, images }) => {
+    const [listing, setListing] = useState({});
+    useEffect(() => {
+        const imagesFileter = images.filter((item) => item.urlParam === id)
+        setListing(...imagesFileter)
+
+    }, [images])
 
     return (
         <section className={styles.container}>
-            <div className={styles.image_container}>
-                {/* <Image sizes="100vw" layout="responsive" className={styles.main_image} alt="testy" width={650} height={450} src={`https://picsum.photos/id/${id}/550/350`} /> */}
+            {listing && <><div className={styles.image_container}>
+
                 <Carousel id={id} />
             </div>
-            <div className={styles.description_container}>
-                <h1 className={styles.main_title}>Buda dla psa {id}</h1>
-                <p className={styles.main_description}>Witam nietypowe budy dla piesków duzych ras Legowisko 120 na 90 wysoka na 130.cm Waga okolo 90 kg Dno ocieplone 5 cm Cała malowana sadolinem.
-                </p>
-                <button className={styles.main_button}>Kontakt</button>
-            </div>
+                <div className={styles.description_container}>
+                    <h1 className={styles.main_title}>{listing.title}</h1>
+                    <p className={styles.main_description}>{listing.description}
+                    </p>
+                    <button className={styles.main_button}>Kontakt</button>
+                </div></>}
         </section>
     )
 }
