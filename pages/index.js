@@ -7,8 +7,7 @@ import Navigation from '../components/Navigation'
 import MainOffer from '../components/MainOffer'
 import Gallery from '../components/Gallery'
 
-
-export default function Home() {
+export default function Home({ post }) {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1)
@@ -17,32 +16,28 @@ export default function Home() {
   useEffect(() => {
     const unsubscribe = () => {
       if (isMounted) {
-        fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=15`)
+        fetchImages(`https://doge-memes.com/api/images`)
       }
     }
     return unsubscribe()
   }, [])
 
+  // useBottomScrollListener(() => {
+  //   if (page <= 20 && isMounted) {
+  //     fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=5`)
+  //     setPage(page + 1)
+  //   }
+  // })
 
-
-  useBottomScrollListener(() => {
-    if (page <= 20 && isMounted) {
-      fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=5`)
-      setPage(page + 1)
-    }
-  })
 
   const fetchImages = (url) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setImages(images.concat(...data))
+        setImages(data)
         setLoading(false)
       })
   }
-
-
-
 
   return (
     <>
@@ -53,10 +48,26 @@ export default function Home() {
 
       <Layout>
         <Navigation />
-        <MainOffer />
+        <MainOffer post={images} />
         <Gallery images={images} loading={loading} />
       </Layout>
 
     </>
   )
 }
+
+
+// export async function getStaticProps() {
+//   // Call an external API endpoint to get posts.
+//   // You can use any data fetching library
+//   const res = await fetch('http://0.0.0.0:3000/api/main-offer')
+//   const post = await res.json()
+
+//   // By returning { props: { posts } }, the Blog component
+//   // will receive `posts` as a prop at build time
+//   return {
+//     props: {
+//       post,
+//     },
+//   }
+// }

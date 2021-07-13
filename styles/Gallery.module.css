@@ -8,6 +8,7 @@
    }
    .gallery_container {
      position: relative;
+     grid-row: span 5;
    }
   
 

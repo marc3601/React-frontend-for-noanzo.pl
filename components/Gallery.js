@@ -6,17 +6,16 @@ const Gallery = ({ images, loading }) => {
 
     return (
         <>
-            {loading && <center><Image styles={{ paddingTop: "25px" }} width={50} height={50} src="/preload.gif" alt="gif" /></center>}
+            {loading && <center><Image styles={{ paddingTop: "45px" }} width={50} height={50} src="/preload.gif" alt="gif" /></center>}
             <section className={styles.container} >
                 {!loading && images && images.map((pic, i) => {
-                    return <div key={i} className={styles.gallery_container} >
-                        <Price price={pic.id} />
-                        <Link href={"/" + pic.id}>
+                    return <div key={i} className={styles.gallery_container}  >
+                        <Price price={100} />
+                        <Link href={"/" + pic.urlParam}>
                             <div className={styles.gallery_item}>
-
                                 <figure className={styles.image}>
-                                    <Image objectFit="cover" layout="responsive" src={pic.download_url} alt="test" width={340} height={310} />
-                                    <aside className={styles.image_title}>{pic.author}</aside>
+                                    <Image objectFit="cover" layout="responsive" src={pic.url} alt="test" width={510} height={480} />
+                                    <aside className={styles.image_title}>{pic.title}</aside>
                                 </figure>
                             </div>
                         </Link>
