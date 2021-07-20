@@ -13,7 +13,7 @@ const Gallery = ({ images, loading }) => {
     }, [images])
     return (
         <>
-            {loading && <center><Image styles={{ paddingTop: "45px" }} width={50} height={50} src="/preload.gif" alt="gif" /></center>}
+            {loading && <center><Image styles={{ marginTop: "45px" }} width={50} height={50} src="/preload.gif" alt="gif" /></center>}
             <section className={styles.container} >
                 {!loading && reversed && reversed.map((pic, i) => {
                     const height = String(pic.height)[0]
