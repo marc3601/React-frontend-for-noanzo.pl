@@ -1,0 +1,25 @@
+.embla__button {
+    outline: 0;
+    cursor: pointer;
+    background-color: transparent;
+    touch-action: manipulation;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    fill: #ffff;
+    padding: 0;
+  }
+
+  .embla__buttonprev {
+    left: 27px;
+  }
+
+  .embla__buttonnext {
+    right: 27px;
+  }

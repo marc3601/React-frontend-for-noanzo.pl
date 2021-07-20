@@ -12,7 +12,6 @@ const Offer = ({ id, images }) => {
     return (
         <section className={styles.container}>
             {listing && <><div className={styles.image_container}>
-
                 <Carousel id={id} />
             </div>
                 <div className={styles.description_container}>
