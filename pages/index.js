@@ -7,7 +7,7 @@ import Navigation from '../components/Navigation'
 import MainOffer from '../components/MainOffer'
 import Gallery from '../components/Gallery'
 
-export default function Home({ post }) {
+export default function Home({ posts }) {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1)
@@ -48,7 +48,7 @@ export default function Home({ post }) {
 
       <Layout>
         <Navigation />
-        <MainOffer post={images} />
+        <MainOffer post={posts[posts.length - 1]} />
         <Gallery images={images} loading={loading} />
       </Layout>
 
@@ -57,17 +57,17 @@ export default function Home({ post }) {
 }
 
 
-// export async function getStaticProps() {
-//   // Call an external API endpoint to get posts.
-//   // You can use any data fetching library
-//   const res = await fetch('http://0.0.0.0:3000/api/main-offer')
-//   const post = await res.json()
+export async function getServerSideProps() {
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+  const res = await fetch('https://doge-memes.com/api/images')
+  const posts = await res.json()
 
-//   // By returning { props: { posts } }, the Blog component
-//   // will receive `posts` as a prop at build time
-//   return {
-//     props: {
-//       post,
-//     },
-//   }
-// }
+  // By returning { props: { posts } }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      posts,
+    },
+  }
+}

@@ -3,12 +3,12 @@
     margin: 40px auto 20px;
     display: grid;
     grid-template-columns: repeat(5,1fr);
-    grid-gap:20px ;
+    grid-gap:20px;
     grid-auto-flow: dense;
    }
    .gallery_container {
      position: relative;
-     grid-row: span 5;
+     height: fit-content;
    }
   
 
