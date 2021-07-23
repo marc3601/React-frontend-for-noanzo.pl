@@ -18,7 +18,7 @@ const Offer = ({ id, images }) => {
                     <h1 className={styles.main_title}>{listing.title}</h1>
                     <p className={styles.main_description}>{listing.description}
                     </p>
-                    <button className={styles.main_button}>Kontakt</button>
+                    <button className={styles.main_button}><a href="tel:+48513904044">Kontakt</a></button>
                 </div></>}
         </section>
     )
