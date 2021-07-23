@@ -57,7 +57,7 @@ export default function Home({ posts }) {
 }
 
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
   const res = await fetch('https://doge-memes.com/api/images')
@@ -69,5 +69,6 @@ export async function getServerSideProps() {
     props: {
       posts,
     },
+    revalidate: 60,
   }
 }

@@ -11,6 +11,7 @@ import Gallery from '../components/Gallery'
 export default function Listing() {
     const [images, setImages] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [title, setTitle] = useState("Anzo");
     const [page, setPage] = useState(1)
     const router = useRouter()
     const isMounted = useMountedState();
@@ -19,6 +20,11 @@ export default function Listing() {
         const unsubscribe = () => {
             if (isMounted) {
                 fetchImages(`https://doge-memes.com/api/images`)
+                if (images.length > 0) {
+                    const title = images.filter((image) => image.urlParam === router.query.id)
+                    setTitle(title[0].title);
+                }
+
             }
         }
         return unsubscribe()
@@ -47,7 +53,7 @@ export default function Listing() {
         <>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-                <title>{router.query.id}</title>
+                <title>{title}</title>
             </Head>
             <Layout>
                 <Navigation />

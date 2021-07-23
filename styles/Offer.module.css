@@ -64,3 +64,8 @@
     background: -webkit-linear-gradient(90deg, rgba(199, 146, 154, 1) 0%, rgba(210, 115, 3, 1) 100%);
     background: linear-gradient(90deg, rgba(199, 146, 154, 1) 0%, rgba(210, 115, 3, 1) 100%);
   }
+
+  .main_button > a {
+    color: white;
+    text-decoration: none;
+  }
