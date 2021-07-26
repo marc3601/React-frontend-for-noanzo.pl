@@ -9,7 +9,7 @@ import Offer from "../components/Offer"
 import Gallery from '../components/Gallery'
 
 export default function Listing() {
-    const [images, setImages] = useState([]);
+    const [auctions, setAuctions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [title, setTitle] = useState("Anzo");
     const [page, setPage] = useState(1)
@@ -19,11 +19,11 @@ export default function Listing() {
     useEffect(() => {
         const unsubscribe = () => {
             if (isMounted) {
-                fetchImages(`https://doge-memes.com/api/images`)
-                if (images.length > 0) {
-                    const title = images.filter((image) => image.urlParam === router.query.id)
-                    setTitle(title[0].title);
-                }
+                fetchImages(`https://doge-memes.com/api/auctions`)
+                // if (auctions.length > 0) {
+                //     const title = auctions.filter((image) => image.id !== router.query.id)
+                //     setTitle(title[0].title);
+                // }
 
             }
         }
@@ -43,7 +43,7 @@ export default function Listing() {
             .then((res) => res.json())
             .then((data) => {
                 const filtered = data.filter(item => item.id !== router.query.id)
-                setImages(filtered)
+                setAuctions(filtered)
                 setLoading(false)
             })
     }
@@ -53,12 +53,12 @@ export default function Listing() {
         <>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-                <title>{title}</title>
+                <title>Test</title>
             </Head>
             <Layout>
                 <Navigation />
-                <Offer id={router.query.id} images={images} />
-                <Gallery images={images} loading={loading} />
+                <Offer item={router.query.id} images={auctions} />
+                <Gallery images={auctions} loading={loading} />
             </Layout>
         </>
     )
