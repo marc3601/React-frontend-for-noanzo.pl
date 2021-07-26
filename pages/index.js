@@ -16,7 +16,7 @@ export default function Home({ posts }) {
   useEffect(() => {
     const unsubscribe = () => {
       if (isMounted) {
-        fetchImages(`https://doge-memes.com/api/images`)
+        fetchImages(`https://doge-memes.com/api/auctions`)
       }
     }
     return unsubscribe()
@@ -60,7 +60,7 @@ export default function Home({ posts }) {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const res = await fetch('https://doge-memes.com/api/images')
+  const res = await fetch('https://doge-memes.com/api/auctions')
   const posts = await res.json()
 
   // By returning { props: { posts } }, the Blog component
