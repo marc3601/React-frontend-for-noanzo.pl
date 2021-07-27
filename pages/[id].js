@@ -9,10 +9,10 @@ import Offer from "../components/Offer"
 import Gallery from '../components/Gallery'
 
 export default function Listing() {
-    const [auctions, setAuctions] = useState([]);
+    const [gallery, setGallery] = useState([]);
+    const [listing, setListing] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [title, setTitle] = useState("Anzo");
-    const [page, setPage] = useState(1)
+
     const router = useRouter()
     const isMounted = useMountedState();
 
@@ -21,7 +21,7 @@ export default function Listing() {
             if (isMounted) {
                 fetchImages(`https://doge-memes.com/api/auctions`)
                 // if (auctions.length > 0) {
-                //     const title = auctions.filter((image) => image.id !== router.query.id)
+                //     const title = auctions.filter((auction) => auction.id !== router.query.id)
                 //     setTitle(title[0].title);
                 // }
 
@@ -43,7 +43,9 @@ export default function Listing() {
             .then((res) => res.json())
             .then((data) => {
                 const filtered = data.filter(item => item.id !== router.query.id)
-                setAuctions(filtered)
+                const current = data.filter(item => item.id === router.query.id)
+                setGallery(filtered)
+                setListing(current)
                 setLoading(false)
             })
     }
@@ -57,8 +59,8 @@ export default function Listing() {
             </Head>
             <Layout>
                 <Navigation />
-                <Offer item={router.query.id} images={auctions} />
-                <Gallery images={auctions} loading={loading} />
+                <Offer item={router.query.id} listing={listing} />
+                <Gallery images={gallery} loading={loading} />
             </Layout>
         </>
     )
