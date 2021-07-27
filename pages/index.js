@@ -10,7 +10,7 @@ import Gallery from '../components/Gallery'
 export default function Home({ posts }) {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1)
+  // const [page, setPage] = useState(1)
   const isMounted = useMountedState();
 
   useEffect(() => {
