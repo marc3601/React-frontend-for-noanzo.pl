@@ -1,4 +1,4 @@
-.embla {
+.container {
     overflow: hidden;
     border-radius: 15px;
     background: -webkit-linear-gradient(
@@ -9,12 +9,4 @@
           background: linear-gradient(
       90deg
       , rgba(199, 146, 154, 1) 0%, rgba(210, 115, 3, 1) 100%);
-  }
-  .embla__container {
-    display: flex;
-  
-  }
-  .embla__slide {
-    position: relative;
-    flex: 0 0 100%;
   }
