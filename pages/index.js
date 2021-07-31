@@ -10,7 +10,6 @@ import Gallery from '../components/Gallery'
 export default function Home({ posts }) {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
-  // const [page, setPage] = useState(1)
   const isMounted = useMountedState();
 
   useEffect(() => {
@@ -25,7 +24,6 @@ export default function Home({ posts }) {
   // useBottomScrollListener(() => {
   //   if (page <= 20 && isMounted) {
   //     fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=5`)
-  //     setPage(page + 1)
   //   }
   // })
 
