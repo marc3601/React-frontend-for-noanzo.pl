@@ -16,23 +16,18 @@ const Gallery = ({ images, loading }) => {
         <>
             {loading && <center><Image styles={{ marginTop: "45px" }} width={50} height={50} src="/preload.gif" alt="gif" /></center>}
             <section className={styles.container} >
-                {!loading && reversed.map((auction, i) => {
-                    const height = String(auction.image[0]?.height)[0]
-                    const style = {
-                        gridRow: `span ${height}`
-                    }
-                    return <div key={i} className={styles.gallery_container} style={style}>
-                        <Price price={auction.price} />
-                        <Link href={"/" + auction.id}>
-                            <div className={styles.gallery_item}>
-                                <figure className={styles.image}>
-                                    <Image loading="lazy" objectFit="contain" layout="responsive" src={auction.image[0]?.url} alt="test" width={auction.image[0]?.width} height={auction.image[0]?.height} />
-                                    <aside className={styles.image_title}>{auction.title}</aside>
-                                </figure>
+                {
+                    !loading && reversed.map((auction, i) => {
+                        const height = auction.image[0]?.height
+
+                        return <Link key={auction.id} href={"/" + auction.id}>
+                            <div className={`${styles.card} ${height < 300 ? styles.card_small : height >= 300 && height < 600 ? styles.card_medium : styles.card_large}`} >
+                                <Image className={styles.image} loading="eager" objectFit="contain" layout="intrinsic" src={auction.image[0]?.url} alt={auction.title} width={auction.image[0]?.width} height={auction.image[0]?.height} />
+                                <aside className={styles.image_title}><p>{auction.title}</p></aside>
                             </div>
                         </Link>
-                    </div>
-                })}
+                    })
+                }
             </section>
         </>
     )
