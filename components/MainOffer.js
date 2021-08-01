@@ -16,7 +16,7 @@ const MainOffer = ({ post }) => {
                 </button>
             </div>
             <div className={styles.top_image_container}>
-                {<Image className={styles.main_image} priority={true} objectFit="cover" alt="testy" width={550} height={350} src={post.image[0].url} />}
+                {<Image className={styles.main_image} objectFit="cover" alt={post.title} priority={true} width={550} height={350} src={post.image[0].url} />}
             </div>
         </section>
     )
