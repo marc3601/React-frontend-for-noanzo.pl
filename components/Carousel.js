@@ -17,7 +17,7 @@ const Carousel = ({ listing }) => {
     return (
         <div className={styles.container} >
             <Slider {...settings}>
-                {listing && <Image sizes="100vw" layout="responsive" className={styles.main_image} alt="testy" width={listing?.width / 1.5} height={listing?.height / 1.5} src={listing?.url} />}
+                {listing && <Image priority={true} sizes="100vw" layout="responsive" className={styles.main_image} alt="testy" width={listing?.width / 1.5} height={listing?.height / 1.5} src={listing?.url} />}
             </Slider>
 
         </div>
