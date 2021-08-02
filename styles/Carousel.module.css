@@ -1,4 +1,5 @@
 .container {
+    position: relative;
     overflow: hidden;
     border-radius: 15px;
     background: -webkit-linear-gradient(
@@ -10,3 +11,20 @@
       90deg
       , rgba(199, 146, 154, 1) 0%, rgba(210, 115, 3, 1) 100%);
   }
+.button {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    transform: translateY(-60%);
+    right: 0;
+    cursor: pointer;
+    font-size: 5rem;
+    color: whitesmoke;
+    width: 25px;
+}
+.button:active {
+    color: rgba(210, 115, 3, 1);
+}
+.prev {
+    left: 0;
+}

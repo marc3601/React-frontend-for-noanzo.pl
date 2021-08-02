@@ -26,7 +26,7 @@ const Offer = ({ item, listing }) => {
         <section className={styles.container}>
             {loading && <div className={styles.loader}><div className={styles.ldsripple}><div></div><div></div></div></div>}
             {!loading && <><div className={styles.image_container}>
-                <Carousel listing={data[0]?.image[0]} />
+                <Carousel listing={data[0]?.image} />
             </div>
                 <div className={styles.description_container}>
                     <h1 className={styles.main_title}>{data[0]?.title}</h1>
