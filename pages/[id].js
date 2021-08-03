@@ -24,7 +24,6 @@ export default function Listing() {
                 //     const title = auctions.filter((auction) => auction.id !== router.query.id)
                 //     setTitle(title[0].title);
                 // }
-
             }
         }
         return unsubscribe()
@@ -44,18 +43,19 @@ export default function Listing() {
             .then((data) => {
                 const filtered = data.filter(item => item.id !== router.query.id)
                 const current = data.filter(item => item.id === router.query.id)
+
                 setGallery(filtered)
                 setListing(current)
                 setLoading(false)
             })
     }
 
-
     return (
         <>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-                <title>Test</title>
+                <meta name="theme-color" content="#f7e5a8" />
+                <title>{listing[0]?.title}</title>
             </Head>
             <Layout>
                 <Navigation />

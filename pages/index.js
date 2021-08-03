@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
-import { useBottomScrollListener } from 'react-bottom-scroll-listener';
+// import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 import { useMountedState } from 'react-use';
 import Layout from "../layout/Layout"
 import Navigation from '../components/Navigation'
@@ -27,7 +27,6 @@ export default function Home({ posts }) {
   //   }
   // })
 
-
   const fetchImages = (url) => {
     fetch(url)
       .then((res) => res.json())
@@ -41,6 +40,7 @@ export default function Home({ posts }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <meta name="theme-color" content="#f7e5a8" />
         <title>Budy dla psow</title>
       </Head>
 
