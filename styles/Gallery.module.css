@@ -36,6 +36,7 @@
   border-radius: 16px;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
   background: -webkit-linear-gradient(
     90deg
     , rgba(199, 146, 154, 1) 0%, rgba(210, 115, 3, 1) 100%);
@@ -58,12 +59,11 @@
 
 .image {
   height: max-content;
+  transition: .2s ease;
 }
 
 .image:hover {
   transform: scale(1.1);
-  transition: .2s ease-out;
-  cursor: pointer;
 }
 
 .image_title {

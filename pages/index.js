@@ -40,7 +40,7 @@ export default function Home({ posts }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-        <meta name="theme-color" content="#f7e5a8" />
+        <meta name="theme-color" content="#d27303" />
         <title>Budy dla psow</title>
       </Head>
 
