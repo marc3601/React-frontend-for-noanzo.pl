@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Carousel from './Carousel'
 import styles from "../styles/Offer.module.css"
-const Offer = ({ item, listing }) => {
+const Offer = ({ item }) => {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState(null)
 
     useEffect(() => {
-
         const unsubscribe = () => {
             if (!loading) {
                 setLoading(true)

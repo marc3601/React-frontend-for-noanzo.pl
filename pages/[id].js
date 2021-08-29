@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-// import { useBottomScrollListener } from 'react-bottom-scroll-listener';
+import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 import { useMountedState } from 'react-use';
 import Head from "next/head"
 import Layout from "../layout/Layout"
@@ -12,41 +12,40 @@ export default function Listing() {
     const [gallery, setGallery] = useState([]);
     const [listing, setListing] = useState([]);
     const [loading, setLoading] = useState(true);
-
+    const [page, setPage] = useState(0);
     const router = useRouter()
     const isMounted = useMountedState();
 
     useEffect(() => {
+        if (gallery.length > 0) setGallery([]);
         const unsubscribe = () => {
             if (isMounted) {
-                fetchImages(`https://doge-memes.com/api/auctions`)
-                // if (auctions.length > 0) {
-                //     const title = auctions.filter((auction) => auction.id !== router.query.id)
-                //     setTitle(title[0].title);
-                // }
+                fetchImages(`https://doge-memes.com/api/auctions?page=${page}&limit=20`)
+                setPage(20)
+
             }
         }
         return unsubscribe()
     }, [router.asPath])
 
 
-    // useBottomScrollListener(() => {
-    //     if (page <= 20 && isMounted) {
-    //         fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=5`)
-    //         setPage(page + 1)
-    //     }
-    // })
+    useBottomScrollListener(() => {
+        if (page >= 10 && isMounted) {
+            fetchImages(`https://doge-memes.com/api/auctions?page=${page}&limit=10`)
+            setPage(page + 10);
+        }
+    })
 
     const fetchImages = (url) => {
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
                 const filtered = data.filter(item => item.id !== router.query.id)
-                const current = data.filter(item => item.id === router.query.id)
-
-                setGallery(filtered)
-                setListing(current)
+                setGallery((prev) => [...prev, ...filtered])
                 setLoading(false)
+            }).finally(() => {
+                const current = gallery.filter(item => item.id === router.query.id)
+                setListing(current)
             })
     }
 
@@ -59,7 +58,7 @@ export default function Listing() {
             </Head>
             <Layout>
                 <Navigation />
-                <Offer item={router.query.id} listing={listing} />
+                <Offer item={router.query.id} />
                 <Gallery images={gallery} loading={loading} />
             </Layout>
         </>

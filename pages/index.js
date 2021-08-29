@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
-// import { useBottomScrollListener } from 'react-bottom-scroll-listener';
+import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 import { useMountedState } from 'react-use';
 import Layout from "../layout/Layout"
 import Navigation from '../components/Navigation'
@@ -10,28 +10,32 @@ import Gallery from '../components/Gallery'
 export default function Home({ posts }) {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(0);
   const isMounted = useMountedState();
 
   useEffect(() => {
     const unsubscribe = () => {
       if (isMounted) {
-        fetchImages(`https://doge-memes.com/api/auctions`)
+        fetchImages(`https://doge-memes.com/api/auctions?page=${page}&limit=20`)
+        setPage(20)
       }
     }
     return unsubscribe()
   }, [])
 
-  // useBottomScrollListener(() => {
-  //   if (page <= 20 && isMounted) {
-  //     fetchImages(`https://picsum.photos/v2/list?page=${page}&limit=5`)
-  //   }
-  // })
+
+  useBottomScrollListener(() => {
+    if (page >= 10 && isMounted) {
+      fetchImages(`https://doge-memes.com/api/auctions?page=${page}&limit=10`)
+      setPage(page + 10);
+    }
+  })
 
   const fetchImages = (url) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setImages(data)
+        setImages((prev) => [...prev, ...data])
         setLoading(false)
       })
   }
