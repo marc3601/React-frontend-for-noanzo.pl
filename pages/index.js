@@ -25,7 +25,7 @@ export default function Home({ posts }) {
 
 
   useBottomScrollListener(() => {
-    if (page >= 10 && isMounted) {
+    if (page >= 20 && isMounted && images.length === page) {
       fetchImages(`https://doge-memes.com/api/auctions?page=${page}&limit=10`)
       setPage(page + 10);
     }

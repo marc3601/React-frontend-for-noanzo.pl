@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Carousel from './Carousel'
 import styles from "../styles/Offer.module.css"
-const Offer = ({ item }) => {
+const Offer = ({ item, setlisting }) => {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState(null)
 
@@ -15,6 +15,7 @@ const Offer = ({ item }) => {
                 .then((res) => res.json())
                 .then((data) => {
                     setData(data);
+                    setlisting(data);
                     setLoading(false)
                 })
         }

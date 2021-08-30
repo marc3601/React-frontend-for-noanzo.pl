@@ -16,7 +16,7 @@ const Gallery = ({ images, loading }) => {
             {loading && <center><Image styles={{ marginTop: "45px" }} width={50} height={50} src="/preload.gif" alt="gif" /></center>}
             <section className={styles.container} >
                 {
-                    !loading && images.map((auction, i) => {
+                    !loading && images?.map((auction, i) => {
                         const height = auction.image[0]?.height
                         return <Link key={auction.id + i} href={"/" + auction.id}>
                             <div className={`${styles.card} ${height < 300 ? styles.card_small : height >= 300 && height < 600 ? styles.card_medium : styles.card_large}`} >
