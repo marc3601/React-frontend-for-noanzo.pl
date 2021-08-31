@@ -12,7 +12,7 @@ const MainOffer = ({ post }) => {
                     {post.description}
                 </p>}
                 <button className={styles.main_button}>
-                    <a href="tel:+48513904044">Kontakt</a>
+                    <a href="tel:+48513904044">+48 513 904 044</a>
                 </button>
             </div>
             <div className={styles.top_image_container}>

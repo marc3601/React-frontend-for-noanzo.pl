@@ -55,8 +55,9 @@
   .main_button {
     margin-top: 2.5rem;
     width: 150px;
-    padding: 10px 35px;
+    padding: 10px 20px;
     border-radius: 25px;
+    font-weight: bold;
     outline: none;
     border: none;
     color: white;

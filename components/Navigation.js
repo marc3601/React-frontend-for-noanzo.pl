@@ -12,15 +12,15 @@ const Navigation = () => {
                 <div className={styles.search_container}>
                     <div className={styles.search_wrapper}>
                         <Loupe />
-                        <input className={styles.search_input} placeholder="Szukaj" />
+                        <input disabled className={styles.search_input} placeholder="Szukaj..." />
                     </div>
 
                 </div>
             </div>
-            <div className={styles.tag_wrapper}>
+            {/* <div className={styles.tag_wrapper}>
                 <span className={styles.tag}>#budydlapsow</span>
                 <span className={styles.tag}>#budydlakotow</span>
-            </div>
+            </div> */}
         </>
     )
 }

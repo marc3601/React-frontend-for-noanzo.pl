@@ -2,6 +2,7 @@ import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
 import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 import { useMountedState } from 'react-use';
+import shuffle from '../utilities/shuffle';
 import Layout from "../layout/Layout"
 import Navigation from '../components/Navigation'
 import MainOffer from '../components/MainOffer'
@@ -35,7 +36,8 @@ export default function Home({ posts }) {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setImages((prev) => [...prev, ...data])
+        const shuffled = shuffle(data);
+        setImages((prev) => [...prev, ...shuffled])
         setLoading(false)
       })
   }

@@ -7,6 +7,7 @@ import Layout from "../layout/Layout"
 import Navigation from '../components/Navigation'
 import Offer from "../components/Offer"
 import Gallery from '../components/Gallery'
+import shuffle from '../utilities/shuffle';
 
 export default function Listing() {
     const [gallery, setGallery] = useState([]);
@@ -30,6 +31,7 @@ export default function Listing() {
     }, [router.asPath])
 
     // ZA MALO DANYCH NA OPOZNIANIE WCZYTYWANIA !!!
+    // PROBLEM Z ODPOWIEDNIM WCZTYWANIEM KOLEJNYCH AUKCJI.
 
     // useBottomScrollListener(() => {
     //     if (page >= 20 && isMounted && gallery.length === page) {
@@ -43,8 +45,9 @@ export default function Listing() {
             .then((res) => res.json())
             .then((data) => {
                 // console.log(data);
-                // const filtered = data.filter(item => item.id !== router.query.id)
-                setGallery(data);
+                const filtered = data.filter(item => item.id !== router.query.id)
+                const shuffled = shuffle(filtered);
+                setGallery(shuffled);
                 setLoading(false)
             })
     }
