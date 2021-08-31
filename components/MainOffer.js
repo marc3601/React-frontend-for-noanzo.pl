@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import styles from "../styles/MainOffer.module.css"
 const MainOffer = ({ post }) => {
-
+    let link = null
+    const thumb = post.image?.filter(item => item.thumbnail === true)
+    if (thumb.length > 0) {
+        link = thumb[0]?.url
+    }
 
     return (
         <section className={styles.top_listing_container}>
@@ -16,7 +20,7 @@ const MainOffer = ({ post }) => {
                 </button>
             </div>
             <div className={styles.top_image_container}>
-                {<Image className={styles.main_image} objectFit="cover" alt={post.title} priority={true} width={550} height={350} src={post.image[0].url} />}
+                {<Image className={styles.main_image} objectFit="cover" alt={post.title} priority={true} width={550} height={350} src={link === null ? post.image[0].url : link} />}
             </div>
         </section>
     )
