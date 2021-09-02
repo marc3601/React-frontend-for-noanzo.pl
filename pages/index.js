@@ -52,7 +52,7 @@ export default function Home({ posts }) {
 
       <Layout>
         <Navigation />
-        <MainOffer post={posts[posts.length - 1]} />
+        <MainOffer post={posts[0]} />
         <Gallery images={images} loading={loading} />
       </Layout>
 
