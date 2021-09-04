@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Link from "next/link"
 import Loupe from '../utilities/Loupe'
 import styles from "../styles/Navigation.module.css"
@@ -31,7 +31,6 @@ const Navigation = () => {
                 filtered.push(item)
             }
         })
-        console.log(filtered);
         return filtered
     }
 
