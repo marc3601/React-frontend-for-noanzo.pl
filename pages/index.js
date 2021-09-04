@@ -30,7 +30,7 @@ export default function Home({ posts }) {
       fetchImages(`https://doge-memes.com/api/auctions?page=${page}&limit=10`)
       setPage(page + 10);
     }
-  })
+  }, { offset: 20 })
 
   const fetchImages = (url) => {
     fetch(url)
