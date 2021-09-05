@@ -52,7 +52,7 @@ export default function Home({ posts }) {
 
       <Layout>
         <Navigation />
-        <MainOffer post={posts[0]} />
+        <MainOffer post={posts} />
         <Gallery images={images} loading={loading} />
       </Layout>
 
@@ -64,9 +64,8 @@ export default function Home({ posts }) {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const res = await fetch('https://doge-memes.com/api/auctions')
+  const res = await fetch('https://doge-memes.com/api/latest')
   const posts = await res.json()
-
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
