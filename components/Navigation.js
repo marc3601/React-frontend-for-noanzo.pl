@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Link from "next/link"
 import Loupe from '../utilities/Loupe'
 import styles from "../styles/Navigation.module.css"
@@ -8,6 +9,16 @@ const Navigation = () => {
     const [input, setInput] = useState("");
     const [titles, setTitles] = useState([])
     const [filteredTitles, setFiltered] = useState([])
+    const router = useRouter();
+
+    useEffect(() => {
+        document.onmousedown = (e) => {
+            if (e.target.className !== "suggestion") {
+                setFiltered([]);
+
+            }
+        }
+    }, [])
 
     const fetchDataForAutocomplete = () => {
         const suggestions = []
@@ -57,18 +68,30 @@ const Navigation = () => {
                                     setWideBar(true)
                                 }
                                 setSuggest(true)
-                            }} onBlur={() => {
+                            }}
+                            onBlur={() => {
                                 setWideBar(false)
-                                setSuggest(false)
-                                setInput("");
-                                setFiltered([])
 
-                            }} className={styles.search_input} placeholder="Szukaj..." />
+                            }}
+                            onKeyUp={e => {
+                                if (e.key === "Enter") {
+                                    router.push(`/search?q=${input}`)
+                                }
+                            }}
+                            className={styles.search_input} placeholder="Szukaj..." />
+
                     </div>
                     <div className={`${styles.search_suggest} ${wideBar && styles.search_suggest_large}`}>
                         {suggest && input?.length > 0 && filteredTitles.length > 0 && <ul className={styles.suggestions}>
                             {filteredTitles?.map((item, id) => {
-                                if (id < 10) return <li key={id}>{item}</li>
+                                if (id < 10) return <li onClick={() => {
+                                    setInput(item)
+                                    setSuggest(false)
+                                    router.push(`/search?q=${item}`)
+
+
+
+                                }} className="suggestion" key={id}>{item}</li>
                                 return
                             })}
                         </ul>}
