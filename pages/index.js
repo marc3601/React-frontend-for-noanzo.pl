@@ -30,7 +30,7 @@ export default function Home({ posts }) {
       fetchImages(`https://doge-memes.com/api/auctions?page=${page}&limit=10`)
       setPage(page + 10);
     }
-  }, { offset: 20 })
+  }, { triggerOnNoScroll: true, debounce: 300 })
 
   const fetchImages = (url) => {
     fetch(url)
@@ -47,7 +47,7 @@ export default function Home({ posts }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <meta name="theme-color" content="#d27303" />
-        <title>Budy dla psow</title>
+        <title>Budy dla psow - noanzo.pl</title>
       </Head>
 
       <Layout>

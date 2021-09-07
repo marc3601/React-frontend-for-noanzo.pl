@@ -57,7 +57,7 @@ export default function Listing() {
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
                 <meta name="theme-color" content="#d27303" />
-                <title>{listing[0]?.title}</title>
+                <title>{`${listing[0]?.title} - noanzo.pl`}</title>
             </Head>
             <Layout>
                 <Navigation />
