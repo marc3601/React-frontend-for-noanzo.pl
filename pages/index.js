@@ -17,7 +17,7 @@ export default function Home({ posts }) {
   useEffect(() => {
     const unsubscribe = () => {
       if (isMounted) {
-        fetchImages(`https://doge-memes.com/api/auctions?page=${page}&limit=20`)
+        fetchImages(`https://admin.noanzo.pl/api/auctions?page=${page}&limit=20`)
         setPage(20)
       }
     }
@@ -27,7 +27,7 @@ export default function Home({ posts }) {
 
   useBottomScrollListener(() => {
     if (page >= 20 && isMounted && images.length === page) {
-      fetchImages(`https://doge-memes.com/api/auctions?page=${page}&limit=10`)
+      fetchImages(`https://admin.noanzo.pl/api/auctions?page=${page}&limit=10`)
       setPage(page + 10);
     }
   }, { triggerOnNoScroll: true, debounce: 300 })
@@ -64,7 +64,7 @@ export default function Home({ posts }) {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const res = await fetch('https://doge-memes.com/api/latest')
+  const res = await fetch('https://admin.noanzo.pl/api/latest')
   const posts = await res.json()
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time

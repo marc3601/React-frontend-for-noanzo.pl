@@ -28,7 +28,7 @@ const Search = () => {
         setLoading(true);
         results.length > 0 && setResults([]);
         const resultsTemp = []
-        fetch("https://doge-memes.com/api/auctions")
+        fetch("https://admin.noanzo.pl/api/auctions")
             .then(res => res.json())
             .then(data => {
 

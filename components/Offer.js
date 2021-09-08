@@ -11,7 +11,7 @@ const Offer = ({ item, setlisting }) => {
             if (!loading) {
                 setLoading(true)
             }
-            const url = `https://doge-memes.com/api/auctions?id=${item}`
+            const url = `https://admin.noanzo.pl/api/auctions?id=${item}`
             fetch(url)
                 .then((res) => res.json())
                 .then((data) => {

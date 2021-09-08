@@ -22,7 +22,7 @@ const Navigation = () => {
 
     const fetchDataForAutocomplete = () => {
         const suggestions = []
-        fetch("https://doge-memes.com/api/auctions")
+        fetch("https://admin.noanzo.pl/api/auctions")
             .then(res => res.json())
             .then(data => {
                 data.forEach(element => {

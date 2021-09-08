@@ -23,7 +23,7 @@ export default function Listing() {
 
         const unsubscribe = () => {
             if (isMounted) {
-                fetchImages(`https://doge-memes.com/api/auctions`)
+                fetchImages(`https://admin.noanzo.pl/api/auctions`)
                 // setPage(20)
             }
         }
@@ -35,7 +35,7 @@ export default function Listing() {
 
     // useBottomScrollListener(() => {
     //     if (page >= 20 && isMounted && gallery.length === page) {
-    //         fetchImages(`https://doge-memes.com/api/auctions?page=${page}&limit=10`)
+    //         fetchImages(`https://admin.noanzo.pl/api/auctions?page=${page}&limit=10`)
     //         setPage(page + 10);
     //     }
     // })
