@@ -23,7 +23,7 @@ const Carousel = ({ listing }) => {
             // }}
             >
                 {listing?.map((image, id) => {
-                    return <SwiperSlide key={id}><Image priority={true} sizes="100vw" layout="responsive" className={styles.main_image} alt="testy" width={image?.width / 1.5} height={image?.height / 1.5} src={image?.url} /> </SwiperSlide>
+                    return <SwiperSlide key={id}><Image priority={true} unoptimized={true} sizes="100vw" layout="responsive" className={styles.main_image} alt="testy" width={image?.width / 1.5} height={image?.height / 1.5} src={image?.url} /> </SwiperSlide>
                 })}
                 {listing?.length > 1 && <>
                     <div className={`${styles.button} ${styles.prev}`} ref={prevRef}>&#8249;</div>

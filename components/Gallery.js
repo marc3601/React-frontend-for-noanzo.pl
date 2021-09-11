@@ -21,7 +21,7 @@ const Gallery = ({ images, loading }) => {
                         }
                         return <Link key={auction.id + i} href={"/" + auction.id}>
                             <div className={`${styles.card} ${height < 300 ? styles.card_small : height >= 300 && height < 600 ? styles.card_medium : styles.card_large}`} >
-                                <Image className={styles.image} objectFit="contain" layout="intrinsic" src={link === null ? auction.image[0]?.url : link} alt={auction.title} width={width} height={height} />
+                                <Image className={styles.image} unoptimized={true} objectFit="contain" layout="intrinsic" src={link === null ? auction.image[0]?.url : link} alt={auction.title} width={width} height={height} />
                                 <aside className={styles.image_title}><p>{auction.title}</p></aside>
                             </div>
                         </Link>
