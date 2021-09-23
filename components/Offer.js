@@ -33,7 +33,7 @@ const Offer = ({ item, setlisting }) => {
                     <h1 className={styles.main_title}>{data[0]?.title}</h1>
                     <p className={styles.main_description}>{data[0]?.description}
                     </p>
-                    <button className={styles.main_button}><a href="tel:+48513904044">+48 513 904 044</a></button>
+                    <button className={styles.main_button}><a href="tel:+48601208409">+48 601 208 409</a></button>
                     <Price price={data[0]?.price} />
                 </div></>}
         </section>

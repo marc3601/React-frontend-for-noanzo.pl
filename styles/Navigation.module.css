@@ -7,10 +7,15 @@
   
   .logo {
     color: #4C2922;
-    font-size: 1.4rem;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo p {
+    font-size: 1.7rem;
   }
   .logo_hide {
     display: none;
@@ -29,8 +34,9 @@
 
   /* Small devices (landscape phones, 576px and up) */
   @media (min-width: 576px) { 
-    .logo {
+    .logo p {
       font-size: 2rem;
+      margin-left: 10px;
     }
     .search_container {
       flex-basis: 60%;
