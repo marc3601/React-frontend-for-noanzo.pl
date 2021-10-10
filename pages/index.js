@@ -15,6 +15,9 @@ export default function Home({ posts }) {
   const isMounted = useMountedState();
 
   useEffect(() => {
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon("https://admin.noanzo.pl/analitics")
+    }
     const unsubscribe = () => {
       if (isMounted) {
         fetchImages(`https://admin.noanzo.pl/api/auctions?page=${page}&limit=20`)
