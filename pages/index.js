@@ -50,7 +50,11 @@ export default function Home({ posts }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <meta name="theme-color" content="#d27303" />
-        <title>Budy dla psow - noanzo.pl</title>
+        <meta name="description" content={posts?.description}></meta>
+        <meta property="og:title" content="Budy dla psów - noanzo.pl" />
+        <meta property="og:description" content={posts?.description} />
+        <meta property="og:image" content={posts.image[0].url} />
+        <title>Budy dla psów - noanzo.pl</title>
       </Head>
 
       <Layout>

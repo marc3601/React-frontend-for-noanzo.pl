@@ -57,6 +57,10 @@ export default function Listing() {
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
                 <meta name="theme-color" content="#d27303" />
+                <meta name="description" content={listing[0]?.description}></meta>
+                <meta property="og:title" content={`${listing[0]?.title} - noanzo.pl`} />
+                <meta property="og:description" content={listing[0]?.description} />
+                <meta property="og:image" content={listing[0]?.image[0].url} />
                 <title>{`${listing[0]?.title} - noanzo.pl`}</title>
             </Head>
             <Layout>
