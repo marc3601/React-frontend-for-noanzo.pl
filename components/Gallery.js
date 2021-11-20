@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react"
 import styles from "../styles/Gallery.module.css"
 import Image from 'next/image'
 import Link from "next/link"
 const Gallery = ({ images, loading }) => {
-
     return (
         <>
             {loading && <center><Image styles={{ marginTop: "45px" }} width={50} height={50} src="/preload.gif" alt="gif" /></center>}

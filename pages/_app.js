@@ -1,6 +1,5 @@
 import Router from "next/router"
 import { useState } from "react"
-import { useEffect } from 'react'
 import TopBarProgress from "react-topbar-progress-indicator"
 import '../styles/globals.css'
 import 'swiper/swiper.scss';

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-// import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 import { useMountedState } from 'react-use';
 import Head from "next/head"
 import Layout from "../layout/Layout"
@@ -13,38 +12,23 @@ export default function Listing() {
     const [gallery, setGallery] = useState([]);
     const [listing, setListing] = useState([]);
     const [loading, setLoading] = useState(true);
-    // const [page, setPage] = useState(0);
     const router = useRouter()
     const isMounted = useMountedState();
 
     useEffect(() => {
-        // setPage(0);
-        // if (gallery.length > 0) setGallery([]);
-
         const unsubscribe = () => {
             if (isMounted) {
                 fetchImages(`https://admin.noanzo.pl/api/auctions`)
-                // setPage(20)
             }
         }
         return unsubscribe()
     }, [router.asPath])
 
-    // ZA MALO DANYCH NA OPOZNIANIE WCZYTYWANIA !!!
-    // PROBLEM Z ODPOWIEDNIM WCZTYWANIEM KOLEJNYCH AUKCJI.
-
-    // useBottomScrollListener(() => {
-    //     if (page >= 20 && isMounted && gallery.length === page) {
-    //         fetchImages(`https://admin.noanzo.pl/api/auctions?page=${page}&limit=10`)
-    //         setPage(page + 10);
-    //     }
-    // })
 
     const fetchImages = (url) => {
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
-                // console.log(data);
                 const filtered = data.filter(item => item.id !== router.query.id)
                 const shuffled = shuffle(filtered);
                 setGallery(shuffled);

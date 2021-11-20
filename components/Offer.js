@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import Carousel from './Carousel'
 import Price from "../utilities/Price"
+import Arrow from '../utilities/Arrow';
 import styles from "../styles/Offer.module.css"
 const Offer = ({ item, setlisting }) => {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState(null)
+    const [scrolled, setScrolled] = useState(false)
 
     useEffect(() => {
+
         const unsubscribe = () => {
             if (!loading) {
                 setLoading(true)
+            }
+            if (!scrolled) {
+                handleIconHideOnScroll()
             }
             const url = `https://admin.noanzo.pl/api/auctions?id=${item}`
             fetch(url)
@@ -23,6 +29,13 @@ const Offer = ({ item, setlisting }) => {
         return unsubscribe()
     }, [item])
 
+
+    const handleIconHideOnScroll = () => {
+        window.onscroll = () => {
+            setScrolled(true)
+        }
+    }
+
     return (
         <section className={styles.container}>
             {loading && <div className={styles.loader}><div className={styles.ldsripple}><div></div><div></div></div></div>}
@@ -35,7 +48,10 @@ const Offer = ({ item, setlisting }) => {
                     </p>
                     <button className={styles.main_button}><a href="tel:+48601208409">+48 601 208 409</a></button>
                     <Price price={data[0]?.price} />
-                </div></>}
+                </div>
+                {!scrolled && <div className={styles.arrow}><Arrow /></div>}
+            </>}
+
         </section>
     )
 }

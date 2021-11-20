@@ -1,6 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
+    position: relative;
     width: 90%;
     margin: 50px auto 50px;
     padding: 30px 0 30px;
@@ -115,3 +116,26 @@
       opacity: 0;
     }
   }
+
+.arrow {
+  position: absolute;
+  right: -4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: arrowDown 1.4s infinite;
+}
+
+@media screen and (max-width:1000px) {
+  .arrow {
+    visibility: hidden;
+  }
+}
+
+@keyframes arrowDown{
+  0% {
+    top: 50%;
+  }
+  100% {
+    top: 60%;
+  }
+}
