@@ -24,7 +24,6 @@ export default function Listing() {
         return unsubscribe()
     }, [router.asPath])
 
-
     const fetchImages = (url) => {
         fetch(url)
             .then((res) => res.json())
@@ -35,7 +34,6 @@ export default function Listing() {
                 setLoading(false)
             })
     }
-
     return (
         <>
             <Head>

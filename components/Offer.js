@@ -9,14 +9,11 @@ const Offer = ({ item, setlisting }) => {
     const [scrolled, setScrolled] = useState(false)
 
     useEffect(() => {
-
         const unsubscribe = () => {
             if (!loading) {
                 setLoading(true)
             }
-            if (!scrolled) {
-                handleIconHideOnScroll()
-            }
+
             const url = `https://admin.noanzo.pl/api/auctions?id=${item}`
             fetch(url)
                 .then((res) => res.json())
@@ -29,15 +26,13 @@ const Offer = ({ item, setlisting }) => {
         return unsubscribe()
     }, [item])
 
-
-    const handleIconHideOnScroll = () => {
-        window.onscroll = () => {
+    const handleWheel = () => {
+        if (!scrolled) {
             setScrolled(true)
         }
     }
-
     return (
-        <section className={styles.container}>
+        <section onWheel={handleWheel} className={styles.container}>
             {loading && <div className={styles.loader}><div className={styles.ldsripple}><div></div><div></div></div></div>}
             {!loading && data[0] !== null && <><div className={styles.image_container}>
                 <Carousel listing={data[0]?.image} />

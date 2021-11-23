@@ -120,7 +120,7 @@
 .arrow {
   position: absolute;
   right: -4rem;
-  top: 50%;
+  top: 20%;
   transform: translateY(-50%);
   animation: arrowDown 1.4s infinite;
 }
@@ -133,9 +133,9 @@
 
 @keyframes arrowDown{
   0% {
-    top: 50%;
+    top: 20%;
   }
   100% {
-    top: 60%;
+    top: 30%;
   }
 }
