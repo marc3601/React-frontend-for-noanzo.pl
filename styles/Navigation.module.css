@@ -1,5 +1,5 @@
 .navigation_section {
-    padding-top: 25px;
+    padding-top: 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -8,14 +8,14 @@
   .logo {
     color: #4C2922;
     font-family: 'Poppins', sans-serif;
-    font-weight: bold;
     cursor: pointer;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
   }
   .logo p {
-    font-size: 1.7rem;
+    font-size: 1rem;
+    text-align: center;
   }
   .logo_hide {
     display: none;
@@ -34,10 +34,6 @@
 
   /* Small devices (landscape phones, 576px and up) */
   @media (min-width: 576px) { 
-    .logo p {
-      font-size: 2rem;
-      margin-left: 10px;
-    }
     .search_container {
       flex-basis: 60%;
     } 

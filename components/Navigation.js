@@ -52,7 +52,7 @@ const Navigation = () => {
                 <Link href="/">
                     <div className={`${styles.logo} ${wideBar && styles.logo_hide}`}>
                         <Logo />
-                        <p>ANZO</p>
+                        <p>noanzo</p>
                     </div>
                 </Link>
                 <div className={`${styles.search_container} ${wideBar && styles.search_container_large}`}>
