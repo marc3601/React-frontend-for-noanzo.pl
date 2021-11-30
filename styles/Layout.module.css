@@ -3,6 +3,7 @@
 .container {
   margin: 0 auto;
   min-height: 105vh;
+  overflow-x: hidden;
 }
 
 @media (min-width: 576px) {
