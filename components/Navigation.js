@@ -52,7 +52,7 @@ const Navigation = () => {
                 <Link href="/">
                     <div className={`${styles.logo} ${wideBar && styles.logo_hide}`}>
                         <Logo />
-                        <p>noanzo</p>
+                        <p>noanzo.pl</p>
                     </div>
                 </Link>
                 <div className={`${styles.search_container} ${wideBar && styles.search_container_large}`}>
@@ -92,9 +92,6 @@ const Navigation = () => {
                                     setInput(item)
                                     setSuggest(false)
                                     router.push(`/search?q=${item}`)
-
-
-
                                 }} className="suggestion" key={id}>{item}</li>
                                 return
                             })}
