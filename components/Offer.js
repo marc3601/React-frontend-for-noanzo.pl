@@ -17,7 +17,7 @@ const Offer = ({ item }) => {
       {item !== null && (
         <>
           <div className={styles.image_container}>
-            <Carousel listing={item[0].image} />
+            <Carousel listing={item[0].image} title={item[0].title} />
           </div>
           <div className={styles.description_container}>
             <h1 className={styles.main_title}>{item[0].title}</h1>
