@@ -31,6 +31,17 @@ export default function Listing({ post }) {
         setLoading(false);
       });
   };
+
+  if (router.isFallback) {
+    return (
+      <Layout>
+        <Navigation />
+        <center>
+          <h3>Strona w trakckie aktualizacji...</h3>
+        </center>
+      </Layout>
+    );
+  }
   return (
     <>
       <Head>
@@ -67,7 +78,7 @@ export async function getStaticPaths() {
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 }
 
 // This also gets called at build time
@@ -84,6 +95,6 @@ export async function getStaticProps({ params }) {
     props: {
       post,
     },
-    revalidate: 60,
+    revalidate: 1,
   };
 }
