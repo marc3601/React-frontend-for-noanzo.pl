@@ -10,11 +10,9 @@ import shuffle from "../utilities/shuffle";
 
 export default function Listing({ post }) {
   const [gallery, setGallery] = useState([]);
-  const [listing, setListing] = useState([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const isMounted = useMountedState();
-
   useEffect(() => {
     const unsubscribe = () => {
       if (isMounted) {
@@ -49,7 +47,7 @@ export default function Listing({ post }) {
       </Head>
       <Layout>
         <Navigation />
-        <Offer item={post} />
+        <Offer key={post[0].id} item={post} />
         <Gallery images={gallery} loading={loading} />
       </Layout>
     </>
