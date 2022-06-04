@@ -37,7 +37,7 @@ export default function Listing({ post }) {
       <Layout>
         <Navigation />
         <center>
-          <h3>Strona w trakckie aktualizacji...</h3>
+          <h3>Podana strona nie istnieje lub jest aktualizowana.</h3>
         </center>
       </Layout>
     );
