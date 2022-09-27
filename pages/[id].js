@@ -13,6 +13,9 @@ export default function Listing({ post }) {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const isMounted = useMountedState();
+  const canonicalUrl = (
+    `https://noanzo.pl` + (router.asPath === "/" ? "" : router.asPath)
+  ).split("?")[0];
   useEffect(() => {
     const unsubscribe = () => {
       if (isMounted) {
@@ -55,6 +58,7 @@ export default function Listing({ post }) {
         <meta property="og:description" content={post[0]?.description} />
         <meta property="og:image" content={post[0]?.image[0].url} />
         <title>{`${post[0]?.title} - noanzo.pl`}</title>
+        <link rel="canonical" href={canonicalUrl} />
       </Head>
       <Layout>
         <Navigation />
