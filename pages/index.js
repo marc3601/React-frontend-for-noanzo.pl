@@ -15,9 +15,6 @@ export default function Home({ posts }) {
   const [page, setPage] = useState(0);
   const isMounted = useMountedState();
   const router = useRouter();
-  const canonicalUrl = (
-    `https://noanzo.pl` + (router.asPath === "/" ? "" : router.asPath)
-  ).split("?")[0];
 
   useEffect(() => {
     if (navigator.sendBeacon) {
@@ -69,7 +66,7 @@ export default function Home({ posts }) {
         <meta property="og:description" content={posts?.description} />
         <meta property="og:image" content={posts.image[0].url} />
         <title>Budy dla psów - noanzo.pl</title>
-        <link rel="canonical" href={canonicalUrl} />
+        <link rel="canonical" href="https://noanzo.pl" />
       </Head>
 
       <Layout>
