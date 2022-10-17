@@ -17,6 +17,9 @@ export default function Listing({ post }) {
     `https://noanzo.pl` + (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
   useEffect(() => {
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon("https://admin.noanzo.pl/analitics");
+    }
     const unsubscribe = () => {
       if (isMounted) {
         fetchImages(`https://admin.noanzo.pl/api/auctions`);
