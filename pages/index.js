@@ -8,6 +8,7 @@ import Navigation from "../components/Navigation";
 import MainOffer from "../components/MainOffer";
 import Gallery from "../components/Gallery";
 import { useRouter } from "next/router";
+import sendBeacon from "../functions/sendBeacon";
 
 export default function Home({ posts }) {
   const [images, setImages] = useState([]);
@@ -17,9 +18,15 @@ export default function Home({ posts }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon("https://admin.noanzo.pl/analitics");
-    }
+    // if (navigator.sendBeacon) {
+    //   navigator.sendBeacon("https://admin.noanzo.pl/analitics");
+    // }
+    const source = document.referrer;
+    const location = window.location.href;
+    sendBeacon("https://admin.noanzo.pl/analitics", {
+      ref: source,
+      loc: location,
+    });
     const unsubscribe = () => {
       if (isMounted) {
         fetchImages(
