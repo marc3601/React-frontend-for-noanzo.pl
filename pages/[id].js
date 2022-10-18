@@ -7,6 +7,7 @@ import Navigation from "../components/Navigation";
 import Offer from "../components/Offer";
 import Gallery from "../components/Gallery";
 import shuffle from "../utilities/shuffle";
+import sendBeacon from "../functions/sendBeacon";
 
 export default function Listing({ post }) {
   const [gallery, setGallery] = useState([]);
@@ -17,9 +18,16 @@ export default function Listing({ post }) {
     `https://noanzo.pl` + (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
   useEffect(() => {
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon("https://admin.noanzo.pl/analitics");
-    }
+    // if (navigator.sendBeacon) {
+    //   navigator.sendBeacon("https://admin.noanzo.pl/analitics");
+    // }
+    const source = document.referrer;
+    const location = window.location.href;
+    sendBeacon("https://admin.noanzo.pl/analitics", {
+      ref: source,
+      loc: location,
+    });
+
     const unsubscribe = () => {
       if (isMounted) {
         fetchImages(`https://admin.noanzo.pl/api/auctions`);
