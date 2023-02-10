@@ -7,7 +7,7 @@ async function sendBeacon(url = "", data = {}) {
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     body: JSON.stringify(data), // body data type must match "Content-Type" header
-  });
+  }).catch((err) => console.warn(err.message));
   return response.json(); // parses JSON response into native JavaScript objects
 }
 

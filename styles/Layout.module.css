@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 .container {
   margin: 0 auto;
@@ -12,20 +12,14 @@
   }
 }
 
-@media (min-width: 768px) {
-  .container {
-    width: 95%;
-  }
-}
-
 @media (min-width: 992px) {
   .container {
     width: 90%;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1139px) {
   .container {
-    width: 85%;
+    width: 90%;
   }
 }
