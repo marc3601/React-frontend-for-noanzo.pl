@@ -16,6 +16,8 @@ export default function Home({ posts }) {
   const [page, setPage] = useState(0);
   const isMounted = useMountedState();
   const router = useRouter();
+  const mainPageTempDescription =
+    "Oferujemy budy dla psów wszystkich ras. Wykonane solidne i trwale z drewna o najwyższej jakości. Krótkie terminy realizacji zamówień.";
 
   useEffect(() => {
     // if (navigator.sendBeacon) {
@@ -64,16 +66,15 @@ export default function Home({ posts }) {
     <>
       <Head>
         <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        ></meta>
-        <meta name="theme-color" content="#d27303" />
-        <meta name="description" content={posts?.description}></meta>
-        <meta property="og:title" content="Budy dla psów - noanzo.pl" />
-        <meta property="og:description" content={posts?.description} />
-        <meta property="og:image" content={posts.image[0].url} />
+          name='viewport'
+          content='width=device-width, initial-scale=1.0'></meta>
+        <meta name='theme-color' content='#d27303' />
+        <meta name='description' content={mainPageTempDescription}></meta>
+        <meta property='og:title' content='Budy dla psów - noanzo.pl' />
+        <meta property='og:description' content={mainPageTempDescription} />
+        <meta property='og:image' content={posts.image[0].url} />
         <title>Budy dla psów - noanzo.pl</title>
-        <link rel="canonical" href="https://noanzo.pl" />
+        <link rel='canonical' href='https://noanzo.pl' />
       </Head>
 
       <Layout>
